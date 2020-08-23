@@ -65,6 +65,14 @@ class Application(tk.Frame):
         
         self.id = 1
         self.iid = 1
+        
+    def total_data(self):
+        sum1 = 0.0
+        for x in self.treeview.get_children():
+            sum1 += float(self.treeview.item(x, "values")[1])
+            self.label.config(text=sum1)
+        tkinter.messagebox.showinfo("Success", "Expenses calculated.")
+            
     
     
         
