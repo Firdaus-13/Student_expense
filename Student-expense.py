@@ -72,7 +72,14 @@ class Application(tk.Frame):
             sum1 += float(self.treeview.item(x, "values")[1])
             self.label.config(text=sum1)
         tkinter.messagebox.showinfo("Success", "Expenses calculated.")
-            
+
+    def insert_data(self):
+        self.treeview.insert('', 'end', iid=self.iid, text="" + str(self.id),
+                             values=( self.Date_entry.get(),
+                                     self.Amount_entry.get(),
+                                     self.Description_entry.get()))
+        self.iid = self.iid + 0
+        self.id = self.id + 0    
     
     
         
