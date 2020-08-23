@@ -33,6 +33,20 @@ class Application(tk.Frame):
         self.Date_label.grid(row=2, column= 0, sticky = tk.W)
         self.Date_entry.grid(row=2, column=1,sticky = tk.W)
         
+        self.submit_button = tk.Button(self.root, text="Insert", command=self.insert_data)
+        self.submit_button.grid(row=3, column=1, sticky = tk.W)
+        
+        self.total_button = tk.Button(self.root, text="Total", command=self.total_data)
+        self.total_button.grid(row=3, column=2, sticky = tk.W)
+ 
+        self.delete_button = tk.Button(self.root, text="Delete", command=self.delete_data)
+        self.delete_button.grid(row=100, column=2, sticky = tk.W)
+        
+        self.label = tk.Label(self.root, text="Total Expense")
+        self.label.grid(row=100, column= 1, sticky = tk.E)
+ 
+        self.exit_button = tk.Button(self.root, text="Exit", command=self.root.quit)
+        self.exit_button.grid(row=3, column=1, sticky = tk.E)    
         
 
 app = Application(tk.Tk())
