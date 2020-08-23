@@ -11,6 +11,13 @@ class Application(tk.Frame):
         self.root = root
         self.initialize_user_interface()
 
+    def initialize_user_interface(self):
+        self.root.title("Student Expense Tracker")
+        self.root.grid_rowconfigure(0, weight=1)
+        self.root.grid_columnconfigure(0, weight=1)
+        self.root.config(background="white")
+        
+        
 
 app = Application(tk.Tk())
 app.root.mainloop()
