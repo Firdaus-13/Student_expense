@@ -78,8 +78,8 @@ class Application(tk.Frame):
                              values=( self.Date_entry.get(),
                                      self.Amount_entry.get(),
                                      self.Description_entry.get()))
-        self.iid = self.iid + 0
-        self.id = self.id + 0    
+        self.iid = self.iid + 1
+        self.id = self.id + 1    
     
     
         
