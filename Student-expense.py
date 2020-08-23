@@ -48,6 +48,25 @@ class Application(tk.Frame):
         self.exit_button = tk.Button(self.root, text="Exit", command=self.root.quit)
         self.exit_button.grid(row=3, column=1, sticky = tk.E)    
         
-
+        self.tree = ttk.Treeview(self.root, columns=('Amount','Description','Date'))
+        
+        self.tree.heading('#0', text='No.')
+        self.tree.heading('#1', text='Date')
+        self.tree.heading('#2', text='Amount')
+        self.tree.heading('#3', text='Description')
+        
+        self.tree.column('#0', stretch=tk.YES)
+        self.tree.column('#1', stretch=tk.YES)
+        self.tree.column('#2', stretch=tk.YES)
+        self.tree.column('#3', stretch=tk.YES)
+        
+        self.tree.grid(row=4, columnspan=4, sticky='nsew')
+        self.treeview = self.tree
+        
+        self.id = 1
+        self.iid = 1
+    
+    
+        
 app = Application(tk.Tk())
 app.root.mainloop()
