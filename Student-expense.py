@@ -77,24 +77,24 @@ class Application(tk.Frame):
         
         self.id = 1
         self.iid = 1
-    
-    def treeview_sort_column(tv, col, reverse):
-            l = [(item(k)["text"], k) for k in get_children()] #Display column #0 cannot be set
-            l.sort(key=lambda t: t[0], reverse=reverse)
-
-            for index, (val, k) in enumerate(l):
-                move(k, '', index)
-
-            heading(col, command=lambda: treeview_sort_column(tv, col, not reverse))     
-        
-            self.tree.heading("#0", command=lambda : treeview_sort_column(tree, "#0", False))
-               
+             
     def total_data(self):
         sum1 = 0.0
         for x in self.treeview.get_children():
             sum1 += float(self.treeview.item(x, "values")[1])
             self.label.config(text=sum1)
         tkinter.messagebox.showinfo("Success", "Expenses calculated.")
+        
+    def treeview_sort_column(self, col, reverse):
+            l = [(treeview.item(k)["text"], k) for k in treeview.get_children()] #Display column #0 cannot be set
+            l.sort(key=lambda t: t[0], reverse=reverse)
+
+            for index, (val, k) in enumerate(l):
+                move(k, '', index)
+
+            self.heading(col, command=lambda: treeview_sort_column(self, col, not reverse))     
+        
+            self.tree.heading("#0", command=lambda : treeview_sort_column(tree, "#0", False))
 
     def insert_data(self):
         self.treeview.insert('', 'end', iid=self.iid, text="" + str(self.id),
