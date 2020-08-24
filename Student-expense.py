@@ -15,7 +15,7 @@ class Application(tk.Frame):
         self.root.title("Student Expense Tracker")
         self.root.grid_rowconfigure(0, weight=1)
         self.root.grid_columnconfigure(0, weight=1)
-        self.root.config(background="white")
+        self.root.config(background="yellow")
         
          # Define the different GUI widgets
         self.Amount_label = tk.Label(self.root, text="Amount (RM) :")
@@ -33,7 +33,7 @@ class Application(tk.Frame):
         self.Date_label.grid(row=2, column= 0, sticky = tk.W)
         self.Date_entry.grid(row=2, column=1,sticky = tk.W)
         
-        self.submit_button = tk.Button(self.root, text="Insert", command=self.insert_data)
+        self.submit_button = tk.Button(self.root, text="Exit", command=self.root.quit)
         self.submit_button.grid(row=3, column=1, sticky = tk.W)
         
         self.total_button = tk.Button(self.root, text="Total", command=self.total_data)
@@ -45,8 +45,8 @@ class Application(tk.Frame):
         self.label = tk.Label(self.root, text="Total Expense")
         self.label.grid(row=100, column= 1, sticky = tk.E)
  
-        self.exit_button = tk.Button(self.root, text="Exit", command=self.root.quit)
-        self.exit_button.grid(row=3, column=1, sticky = tk.E)    
+        self.exit_button = tk.Button(self.root, text="Insert", command=self.insert_data)
+        self.exit_button.grid(row=3, column=0, sticky = tk.E)    
         
         self.tree = ttk.Treeview(self.root, columns=('Amount','Description','Date'))
         
@@ -79,7 +79,11 @@ class Application(tk.Frame):
                                      self.Amount_entry.get(),
                                      self.Description_entry.get()))
         self.iid = self.iid + 1
-        self.id = self.id + 1    
+        self.id = self.id + 1
+    
+    def delete_data(self):
+        row_id = int(self.tree.focus())
+        self.treeview.delete(row_id)    
     
     
         
