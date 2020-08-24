@@ -106,7 +106,7 @@ class Application(tk.Frame):
             l.sort(key=lambda t: t[0], reverse=reverse)
 
             for index, (val, k) in enumerate(l):
-                move(k, '', index)
+                self.move(k, '', index)
 
             self.heading(col, command=lambda: treeview_sort_column(self, col, not reverse))     
         
