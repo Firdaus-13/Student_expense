@@ -94,7 +94,7 @@ class Application(tk.Frame):
              
     #function for total button (total for all amount)
     def total_data(self):
-        sum1 = 0.0
+        sum1 = 0
         for x in self.treeview.get_children():
             sum1 += float(self.treeview.item(x, "values")[1])
             self.label.config(text=sum1)
