@@ -17,15 +17,18 @@ class Application(tk.Frame):
         self.root.grid_columnconfigure(0, weight=1)
         self.root.config(background="yellow")
         
-         # Define the different GUI widgets
+        #Define the different GUI widgets
         #TITLE
         self.label = tk.Label(self.root,text = "Student Expense Tracker")
-        self.label.grid(row=0, column= 0 ,)
+        self.label.grid(row=0, column= 0)
 
+        #showing it onto screen
+        #tk.W=Stick to LEFT, tk.E=Stick to RIGHt
+        
         self.Amount_label = tk.Label(self.root, text="Amount (RM) :")
         self.Amount_entry = tk.Entry(self.root)
-        self.Amount_label.grid(row=1, column= 0 ,sticky = tk.W)
-        self.Amount_entry.grid(row=1, column=1,sticky = tk.W)
+        self.Amount_label.grid(row=1, column= 0, sticky = tk.W)
+        self.Amount_entry.grid(row=1, column=1, sticky = tk.W)
  
         self.Description_label = tk.Label(self.root, text="Description     :")
         self.Description_entry = tk.Entry(self.root)
@@ -36,6 +39,8 @@ class Application(tk.Frame):
         self.Date_entry = tk.Entry(self.root)
         self.Date_label.grid(row=3, column= 0, sticky = tk.W)
         self.Date_entry.grid(row=3, column=1,sticky = tk.W)
+        
+        #create widget for buttons
         
         self.submit_button = tk.Button(self.root, text="Exit", command=self.root.quit)
         self.submit_button.grid(row=4, column=1, sticky = tk.W)
@@ -92,4 +97,5 @@ class Application(tk.Frame):
     
         
 app = Application(tk.Tk())
+#infinite loop for window stays in view
 app.root.mainloop()
