@@ -18,41 +18,48 @@ class Application(tk.Frame):
         self.root.config(background="yellow")
         
          # Define the different GUI widgets
+        #TITLE
+        self.label = tk.Label(self.root,text = "Student Expense Tracker")
+        self.label.grid(row=0, column= 0)
+
+        self.label = tk.Label(self.root,text = "Records of Student Expense ")
+        self.label.grid(row=6, column= 0,sticky = tk.W)
+
         self.Amount_label = tk.Label(self.root, text="Amount (RM) :")
         self.Amount_entry = tk.Entry(self.root)
-        self.Amount_label.grid(row=0, column= 0 ,sticky = tk.W)
-        self.Amount_entry.grid(row=0, column=1,sticky = tk.W)
+        self.Amount_label.grid(row=1, column= 0 ,sticky = tk.W)
+        self.Amount_entry.grid(row=1, column=1,sticky = tk.W)
  
         self.Description_label = tk.Label(self.root, text="Description     :")
         self.Description_entry = tk.Entry(self.root)
-        self.Description_label.grid(row=1, column=0 ,sticky = tk.W)
-        self.Description_entry.grid(row=1, column=1,sticky = tk.W)
+        self.Description_label.grid(row=2, column=0 ,sticky = tk.W)
+        self.Description_entry.grid(row=2, column=1,sticky = tk.W)
         
         self.Date_label = tk.Label(self.root, text="Date                 :")
         self.Date_entry = tk.Entry(self.root)
-        self.Date_label.grid(row=2, column= 0, sticky = tk.W)
-        self.Date_entry.grid(row=2, column=1,sticky = tk.W)
+        self.Date_label.grid(row=3, column= 0, sticky = tk.W)
+        self.Date_entry.grid(row=3, column=1,sticky = tk.W)
         
         self.submit_button = tk.Button(self.root, text="Exit", command=self.root.quit)
-        self.submit_button.grid(row=3, column=1, sticky = tk.W)
+        self.submit_button.grid(row=4, column=1, sticky = tk.W)
         
         self.total_button = tk.Button(self.root, text="Total", command=self.total_data)
-        self.total_button.grid(row=3, column=2, sticky = tk.W)
+        self.total_button.grid(row=4, column=2, sticky = tk.W)
  
         self.delete_button = tk.Button(self.root, text="Delete", command=self.delete_data)
-        self.delete_button.grid(row=100, column=2, sticky = tk.W)
+        self.delete_button.grid(row=10, column=2, sticky = tk.W)
         
         self.label = tk.Label(self.root, text="Total Expense")
-        self.label.grid(row=100, column= 1, sticky = tk.E)
+        self.label.grid(row=10, column= 1, sticky = tk.E)
  
         self.exit_button = tk.Button(self.root, text="Insert", command=self.insert_data)
-        self.exit_button.grid(row=3, column=0, sticky = tk.E)    
+        self.exit_button.grid(row=4, column=0, sticky = tk.E)    
         
-        self.tree = ttk.Treeview(self.root, columns=('Amount','Description','Date'))
+        self.tree = ttk.Treeview(self.root, columns=('Amount(RM)','Description','Date'))
         
         self.tree.heading('#0', text='No.')
         self.tree.heading('#1', text='Date')
-        self.tree.heading('#2', text='Amount')
+        self.tree.heading('#2', text='Amount (RM)')
         self.tree.heading('#3', text='Description')
         
         self.tree.column('#0', stretch=tk.YES)
@@ -60,7 +67,7 @@ class Application(tk.Frame):
         self.tree.column('#2', stretch=tk.YES)
         self.tree.column('#3', stretch=tk.YES)
         
-        self.tree.grid(row=4, columnspan=4, sticky='nsew')
+        self.tree.grid(row=7, columnspan=4, sticky='nsew')
         self.treeview = self.tree
         
         self.id = 1
@@ -95,7 +102,7 @@ class Application(tk.Frame):
     def delete_data(self):
         row_id = int(self.tree.focus())
         self.treeview.delete(row_id)    
-    
+     
     
         
 app = Application(tk.Tk())
