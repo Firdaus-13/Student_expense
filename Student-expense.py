@@ -15,7 +15,7 @@ class Application(tk.Frame):
         self.root.title("Student Expense Tracker")
         self.root.grid_rowconfigure(0, weight=1)
         self.root.grid_columnconfigure(0, weight=1)
-        #self.root.config(background="yellow")
+        self.root.config(background="yellow")
         
          # Define the different GUI widgets
         #TITLE
@@ -47,19 +47,19 @@ class Application(tk.Frame):
         self.total_button.grid(row=4, column=2, sticky = tk.W)
  
         self.delete_button = tk.Button(self.root, text="Delete", command=self.delete_data)
-        self.delete_button.grid(row=100, column=2, sticky = tk.W)
+        self.delete_button.grid(row=10, column=2, sticky = tk.W)
         
         self.label = tk.Label(self.root, text="Total Expense")
-        self.label.grid(row=100, column= 1, sticky = tk.E)
+        self.label.grid(row=10, column= 1, sticky = tk.E)
  
         self.exit_button = tk.Button(self.root, text="Insert", command=self.insert_data)
         self.exit_button.grid(row=4, column=0, sticky = tk.E)    
         
-        self.tree = ttk.Treeview(self.root, columns=('Amount','Description','Date'))
+        self.tree = ttk.Treeview(self.root, columns=('Amount(RM)','Description','Date'))
         
         self.tree.heading('#0', text='No.')
         self.tree.heading('#1', text='Date')
-        self.tree.heading('#2', text='Amount')
+        self.tree.heading('#2', text='Amount (RM)')
         self.tree.heading('#3', text='Description')
         
         self.tree.column('#0', stretch=tk.YES)
