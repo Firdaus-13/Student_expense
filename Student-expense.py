@@ -22,6 +22,9 @@ class Application(tk.Frame):
         self.label = tk.Label(self.root,text = "Student Expense Tracker")
         self.label.grid(row=0, column= 0)
 
+        self.label = tk.Label(self.root,text = "Records of Student Expense ")
+        self.label.grid(row=6, column= 0,sticky = tk.W)
+
         #showing it onto screen
         #tk.W=Stick to LEFT, tk.E=Stick to RIGHt
         
@@ -49,19 +52,19 @@ class Application(tk.Frame):
         self.total_button.grid(row=4, column=2, sticky = tk.W)
  
         self.delete_button = tk.Button(self.root, text="Delete", command=self.delete_data)
-        self.delete_button.grid(row=100, column=2, sticky = tk.W)
+        self.delete_button.grid(row=10, column=2, sticky = tk.W)
         
         self.label = tk.Label(self.root, text="Total Expense")
-        self.label.grid(row=100, column= 1, sticky = tk.E)
+        self.label.grid(row=10, column= 1, sticky = tk.E)
  
         self.exit_button = tk.Button(self.root, text="Insert", command=self.insert_data)
         self.exit_button.grid(row=4, column=0, sticky = tk.E)    
         
-        self.tree = ttk.Treeview(self.root, columns=('Amount','Description','Date'))
+        self.tree = ttk.Treeview(self.root, columns=('Amount(RM)','Description','Date'))
         
         self.tree.heading('#0', text='No.')
         self.tree.heading('#1', text='Date')
-        self.tree.heading('#2', text='Amount')
+        self.tree.heading('#2', text='Amount (RM)')
         self.tree.heading('#3', text='Description')
         
         self.tree.column('#0', stretch=tk.YES)
@@ -69,12 +72,23 @@ class Application(tk.Frame):
         self.tree.column('#2', stretch=tk.YES)
         self.tree.column('#3', stretch=tk.YES)
         
-        self.tree.grid(row=5, columnspan=4, sticky='nsew')
+        self.tree.grid(row=7, columnspan=4, sticky='nsew')
         self.treeview = self.tree
         
         self.id = 1
         self.iid = 1
+    
+    def treeview_sort_column(tv, col, reverse):
+            l = [(item(k)["text"], k) for k in get_children()] #Display column #0 cannot be set
+            l.sort(key=lambda t: t[0], reverse=reverse)
+
+            for index, (val, k) in enumerate(l):
+                move(k, '', index)
+
+            heading(col, command=lambda: treeview_sort_column(tv, col, not reverse))     
         
+            self.tree.heading("#0", command=lambda : treeview_sort_column(tree, "#0", False))
+               
     def total_data(self):
         sum1 = 0.0
         for x in self.treeview.get_children():
