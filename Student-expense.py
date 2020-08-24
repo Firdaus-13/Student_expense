@@ -15,12 +15,15 @@ class Application(tk.Frame):
         self.root.title("Student Expense Tracker")
         self.root.grid_rowconfigure(0, weight=1)
         self.root.grid_columnconfigure(0, weight=1)
-        self.root.config(background="yellow")
+        #self.root.config(background="yellow")
         
          # Define the different GUI widgets
         #TITLE
         self.label = tk.Label(self.root,text = "Student Expense Tracker")
-        self.label.grid(row=0, column= 0 ,)
+        self.label.grid(row=0, column= 0)
+
+        self.label = tk.Label(self.root,text = "Records of Student Expense ")
+        self.label.grid(row=6, column= 0,sticky = tk.W)
 
         self.Amount_label = tk.Label(self.root, text="Amount (RM) :")
         self.Amount_entry = tk.Entry(self.root)
@@ -64,7 +67,7 @@ class Application(tk.Frame):
         self.tree.column('#2', stretch=tk.YES)
         self.tree.column('#3', stretch=tk.YES)
         
-        self.tree.grid(row=5, columnspan=4, sticky='nsew')
+        self.tree.grid(row=7, columnspan=4, sticky='nsew')
         self.treeview = self.tree
         
         self.id = 1
