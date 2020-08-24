@@ -99,18 +99,7 @@ class Application(tk.Frame):
             sum1 += float(self.treeview.item(x, "values")[1])
             self.label.config(text=sum1)
         tkinter.messagebox.showinfo("Success", "Expenses calculated.")
-    
-    #function for sort    
-    def treeview_sort_column(self, col, reverse):
-        l = [(treeview.item(k)["text"], k) for k in treeview.get_children()] #Display column #0 cannot be set
-        l.sort(key=lambda t: t[0], reverse=reverse)
 
-        for index, (val, k) in enumerate(l):
-            self.move(k, '', index)
-
-            self.heading(col, command=lambda: treeview_sort_column(self, col, not reverse))     
-        
-            self.tree.heading("#0", command=lambda : treeview_sort_column(tree, "#0", False))
 
     #function for insert button
     def insert_data(self):
@@ -124,7 +113,20 @@ class Application(tk.Frame):
     #function for delete button
     def delete_data(self):
         row_id = int(self.tree.focus())
-        self.treeview.delete(row_id)    
+        self.treeview.delete(row_id)
+        
+    
+    #function for sort    
+    def treeview_sort_column(self, col, reverse):
+        l = [(treeview.item(k)["text"], k) for k in treeview.get_children()] #Display column #0 cannot be set
+        l.sort(key=lambda t: t[0], reverse=reverse)
+
+        for index, (val, k) in enumerate(l):
+            self.move(k, '', index)
+
+            self.heading(col, command=lambda: treeview_sort_column(self, col, not reverse))     
+        
+            self.tree.heading("#0", command=lambda : treeview_sort_column(tree, "#0", False))    
      
     
         
